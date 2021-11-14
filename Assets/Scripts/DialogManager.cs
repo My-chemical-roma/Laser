@@ -6,45 +6,38 @@ using UnityEngine.UI;
 
 public class DialogManager : MonoBehaviour
 {
+    [SerializeField]
+    private string[] str;
     public GameObject panel;
     public Text dialog;
-    public Text next;
-    
-    [TextArea(3,10)]
-    public string[] message;
-    public string[] press;
-    
-    private int _i = 0;
-    private bool _flag = true;
+    [SerializeField]
+    private int j = 0;
 
     void Start()
     {
-        dialog.text = message[_i];
-        next.text = press[_i];
-        _i++;
+        StartCoroutine(RuningText(j));
     }
 
-   void Update()
+    private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R)&&_flag&&_i<message.Length)
+        if (Input.GetKeyUp(KeyCode.R) && dialog.text.Length == str[j].Length && str.Length - 1 > j)
         {
-            dialog.text = message[_i];
-            _i++;
-            _flag = false;
-            if (_i == message.Length)
-            {
-                next.text = press[1];
-            }
-        }
-
-        if (Input.GetKeyUp(KeyCode.R))
-        {
-            _flag = true;
+            StartCoroutine(RuningText(++j));
         }
 
         if (Input.GetKeyDown(KeyCode.F))
         {
-            SceneManager.LoadScene("Main");
+            gameObject.active = false;
+        }
+    }
+    public IEnumerator RuningText(int j)
+    {
+        dialog.text = "";
+        for (var i = 0; i < str[j].Length; i++)
+        {
+            char s = str[j][i];
+            dialog.text += s;
+            yield return new WaitForSeconds(0.05f);
         }
     }
 }
