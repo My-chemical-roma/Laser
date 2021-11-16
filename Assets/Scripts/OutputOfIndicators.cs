@@ -6,31 +6,44 @@ using UnityEngine;
 public class OutputOfIndicators : MonoBehaviour
 {
     [SerializeField]
-    private int i = 1;
-    private TextMeshProUGUI textMesh;
+    private int i = 0;
+    [SerializeField]
+    private ParticleSystem raySystem;
+    [SerializeField]
+    private TextMeshProUGUI output;
+    [SerializeField]
+    private TextMeshProUGUI input;
     private Conformity conformity = new Conformity();
-    void Start() => textMesh = gameObject.GetComponent<TextMeshProUGUI>();
+    private ChangeLaser changeLaser = new ChangeLaser();
 
-    void Update()
+    public void OnClickPlus()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (i < 20)
         {
-            ShowText();
-            if (i < 21)
-                i++;
+            i++;
         }
-
-        if (Input.GetMouseButtonDown(1))
+        ShowTextLaserRed();
+        if (int.Parse(conformity.NumberMJoule(i)) == 11)
+            changeLaser.OnChangeColorRed(raySystem);
+    }
+    public void OnClickMines()
+    {
+        if (i > 0)
         {
-            ShowText();
-            if (i > 0)
-                i--;
+            i--;
         }
+        ShowTextLaserRed();
+        if (int.Parse(conformity.NumberMJoule(i)) < 11)
+            changeLaser.OffColor(raySystem);
     }
 
-    void ShowText()
+    void ShowTextLaserRed()
     {
-        //textMesh.text = conformity.NumberJoule(i); - для второго датчика.
-        textMesh.text = conformity.NumberMJoule(i);
+        input.text = conformity.NumberJoule(i);
+        output.text = $"{conformity.NumberMJoule(i)}Дж.";
+    }
+    void ShowTextLaserGreen()
+    {
+        input.text = conformity.NumberMJoule(i);
     }
 }
