@@ -12,8 +12,8 @@ public class Button_Board : MonoBehaviour
     #region TextReader
     private List<string> GetText(string File_Name)
     {
-        TextAsset data = (TextAsset)Resources.Load(File_Name);
-        string[] tmp = data.text.Split('\n');
+        TextAsset data = (TextAsset)Resources.Load(File_Name) as TextAsset;
+        List<string> tmp = new List<string>(data.text.Split('\n'));
         _textInfo.AddRange(tmp);
         return _textInfo;
     }
