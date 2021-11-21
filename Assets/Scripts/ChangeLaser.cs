@@ -1,55 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ChangeLaser : MonoBehaviour
 {
     [SerializeField]
-    private ParticleSystem ray;
+    private Button Button;
     [SerializeField]
-    private TextMeshProUGUI output;
-    [SerializeField]
-    private TextMeshProUGUI input;
-    public bool isRed;
-    [SerializeField]
-    private Image redButton;
-    [SerializeField]
-    private Image greenButton;
+    private ParticleSystem colorRay;
+    public GameObject cube;
 
-    public void OnActivateLaserGreen()
+    public void OnChangeColorGreen()
     {
-        isRed = false;
-        input.text = "0Äæ";
-        output.text = "0ìÄæ";
-        ray.Stop();
-        greenButton.color = Color.green;
-        redButton.color = Color.white;
-    }
-    public void OnActivateLaserRed()
-    {
-        isRed = true;
-        input.text = "0Äæ";
-        output.text = "0ìÄæ";
-        ray.Stop();
-        greenButton.color = Color.white;
-        redButton.color = Color.red;
-    }
-    public void StartGreenLaser()
-    {
-        var main = ray.main;
+        var main = colorRay.main;
         main.startColor = Color.green;
-        ray.Play();
     }
-    public void StartRedLaser()
+    public void OnChangeColorRedButton()
     {
-        var main = ray.main;
+        var main = colorRay.main;
         main.startColor = Color.red;
-        ray.Play();
     }
-    public void StopLaser()
+    public void OnChangeColorRed(ParticleSystem system)
     {
-        ray.Stop();
+        var main = system.main;
+        main.startColor = Color.red;
+    }
+
+    public void OffColor(ParticleSystem system)
+    {
+        var main = system.main;
+        main.startColor = new Color(0, 0, 0, 0f);
     }
 }
