@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.118014105, g: 0.15365869, b: 0.11691452, a: 1}
+  m_IndirectSpecularColor: {r: 0.11792358, g: 0.15363058, b: 0.116854526, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4216,9 +4216,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '0
-
-'
+  m_text: "0\u043C\u0414\u0436\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -9373,10 +9371,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e958f15eb6e45d44285abd6c3b3d91e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  i: 0
-  raySystem: {fileID: 628848801}
   output: {fileID: 596768566}
   input: {fileID: 1541606765}
+  i: 0
+  j: 0
+  laser: {fileID: 959984248}
 --- !u!1 &639378301
 GameObject:
   m_ObjectHideFlags: 0
@@ -11907,6 +11906,7 @@ GameObject:
   - component: {fileID: 959984246}
   - component: {fileID: 959984245}
   - component: {fileID: 959984244}
+  - component: {fileID: 959984248}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -11996,6 +11996,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0.17520146, y: 0.017801285}
   m_SizeDelta: {x: 0.9, y: 0.2}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &959984248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959984243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3f8a4f4e57ad7d41a29a98c7ca8d1d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ray: {fileID: 628848801}
+  output: {fileID: 596768566}
+  input: {fileID: 1541606765}
+  isRed: 0
 --- !u!1 &968370300
 GameObject:
   m_ObjectHideFlags: 0
@@ -13100,8 +13116,48 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   raySystem: {fileID: 0}
-  jouleArray: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f0000001000000011000000120000001300000014000000
-  mJouleArray: 000000000000000000000000000000000000000000000000000000000b00000019000000260000003e0000004b0000005a000000700000007d00000091000000a2000000af000000b9000000c8000000dc000000
+  jouleArrayLaserRed: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f0000001000000011000000120000001300000014000000
+  mJouleArrayLaserRed: 000000000000000000000000000000000000000000000000000000000b00000019000000260000003e0000004b0000005a000000700000007d00000091000000a2000000af000000b9000000c8000000dc000000
+  jouleArrayLaserGreen:
+  - 0
+  - 0.05
+  - 0.1
+  - 0.15
+  - 0.2
+  - 0.25
+  - 0.3
+  - 0.35
+  - 0.4
+  - 0.45
+  - 0.5
+  - 0.55
+  - 0.6
+  - 0.65
+  - 0.7
+  - 0.75
+  - 0.8
+  - 0.85
+  - 0.95
+  mJouleArrayLaserGreen:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 3.4
+  - 5
+  - 6.4
+  - 8.2
+  - 9.8
+  - 11.6
+  - 13
+  - 14
+  - 15.6
+  - 16.8
+  - 19.2
+  - 20.4
+  - 22
+  - 23.4
 --- !u!1 &1137456699
 GameObject:
   m_ObjectHideFlags: 0
@@ -16745,7 +16801,6 @@ GameObject:
   - component: {fileID: 1530173055}
   - component: {fileID: 1530173054}
   - component: {fileID: 1530173053}
-  - component: {fileID: 1530173056}
   m_Layer: 5
   m_Name: RightButton
   m_TagString: Untagged
@@ -16816,9 +16871,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1530173056}
+      - m_Target: {fileID: 959984248}
         m_TargetAssemblyTypeName: ChangeLaser, Assembly-CSharp
-        m_MethodName: OnChangeColorRedButton
+        m_MethodName: OnActivateLaserRed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16866,21 +16921,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1530173051}
   m_CullTransparentMesh: 1
---- !u!114 &1530173056
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1530173051}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3f8a4f4e57ad7d41a29a98c7ca8d1d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Button: {fileID: 1530173053}
-  colorRay: {fileID: 628848801}
-  cube: {fileID: 391414337}
 --- !u!1 &1541606763
 GameObject:
   m_ObjectHideFlags: 0
@@ -16938,7 +16978,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "0\u0414\u0436."
+  m_text: "0\u0414\u0436"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -17671,7 +17711,6 @@ GameObject:
   - component: {fileID: 1623899253}
   - component: {fileID: 1623899252}
   - component: {fileID: 1623899251}
-  - component: {fileID: 1623899254}
   m_Layer: 5
   m_Name: LeftButton
   m_TagString: Untagged
@@ -17742,9 +17781,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1623899254}
+      - m_Target: {fileID: 959984248}
         m_TargetAssemblyTypeName: ChangeLaser, Assembly-CSharp
-        m_MethodName: OnChangeColorGreen
+        m_MethodName: OnActivateLaserGreen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -17792,21 +17831,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1623899249}
   m_CullTransparentMesh: 1
---- !u!114 &1623899254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1623899249}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3f8a4f4e57ad7d41a29a98c7ca8d1d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Button: {fileID: 1623899251}
-  colorRay: {fileID: 628848801}
-  cube: {fileID: 89962898}
 --- !u!1 &1634029181
 GameObject:
   m_ObjectHideFlags: 0
