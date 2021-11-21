@@ -11986,8 +11986,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: -0.0074000047}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1530173052}
   - {fileID: 1623899250}
+  - {fileID: 1530173052}
   m_Father: {fileID: 300652574}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -129.421, y: 0.5970001, z: 179.857}
@@ -12012,8 +12012,6 @@ MonoBehaviour:
   output: {fileID: 596768566}
   input: {fileID: 1541606765}
   isRed: 0
-  redButton: {fileID: 1530173054}
-  greenButton: {fileID: 1623899252}
 --- !u!1 &968370300
 GameObject:
   m_ObjectHideFlags: 0
@@ -16804,7 +16802,7 @@ GameObject:
   - component: {fileID: 1530173054}
   - component: {fileID: 1530173053}
   m_Layer: 5
-  m_Name: RedButton
+  m_Name: RightButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16822,7 +16820,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 959984247}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0.125, y: 180, z: -0.154}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -17714,7 +17712,7 @@ GameObject:
   - component: {fileID: 1623899252}
   - component: {fileID: 1623899251}
   m_Layer: 5
-  m_Name: GreenButton
+  m_Name: LeftButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17732,7 +17730,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 959984247}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0.125, y: 180, z: -0.154}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
