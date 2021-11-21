@@ -13,6 +13,10 @@ public class ChangeLaser : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI input;
     public bool isRed;
+    [SerializeField]
+    private Image redButton;
+    [SerializeField]
+    private Image greenButton;
 
     public void OnActivateLaserGreen()
     {
@@ -20,6 +24,8 @@ public class ChangeLaser : MonoBehaviour
         input.text = "0Äæ";
         output.text = "0ìÄæ";
         ray.Stop();
+        greenButton.color = Color.green;
+        redButton.color = Color.white;
     }
     public void OnActivateLaserRed()
     {
@@ -27,6 +33,8 @@ public class ChangeLaser : MonoBehaviour
         input.text = "0Äæ";
         output.text = "0ìÄæ";
         ray.Stop();
+        greenButton.color = Color.white;
+        redButton.color = Color.red;
     }
     public void StartGreenLaser()
     {
